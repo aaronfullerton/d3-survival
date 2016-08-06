@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AML Survival Analysis</title>
+
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="tipsy.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="container wrap push">
+	<h1 class="center">  <a href="#menu" class="menu-link"><i class="fa fa-cogs"></i></a> AML Survival Analysis </h1>
+	<h3 id="filters" class="center"> Currently showing all patients </h3>
+
+	<div id="stats-wrapper">
+		<div id="stats">
+		<h6> Key </h6>
+		<p id="legend"> <i class="fa fa-circle"></i> Censored patients </p>
+		<hr>
+		<h6> Statistics </h6>
+			<p id="n"> </p>
+			<p id="survival"> </p>
+		</div>
+	</div>
+
+
+	<div class="chart center">
+	</div>
+
+	<div>
+		<p class="center"> * This graph assumes that patients with a follow-up date after Feb 1, 2015 are alive today </p>
+	</div>
+</div>
+
+<nav id="menu" class="panel" role="navigation">
+	<h2> Filter Data </h2>
+	<form>
+
+		<input class="input-block" type="text" placeholder="Start Date" id="date">
+		<input class="input-block" type="text" placeholder="Minimum Age" id="age">
+		<div class="form-checkbox">
+		    <label>
+		      <input type="checkbox" id="include">
+		      First treated here?
+		    </label>
+		    <p class="note">
+		      Include only patients that were first treated here
+		    </p>
+	 	</div>
+	 	<div class="form-checkbox">
+		    <label>
+		      <input type="checkbox" id="transplant">
+		      Transplant
+		    </label>
+		    <p class="note">
+		      Include only patients that have had a BMT
+		    </p>
+	 	</div>
+
+		<div class="form-actions">
+		  <button type="button" id="reset" class="btn">Reset</button>
+		  <button type="button" id="apply" class="btn btn-primary">Apply</button>
+		</div>
+
+	</form>
+</nav>
+
+	<!-- dependencies -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="tipsy.js"></script>
+	<script src="crossfilter.min.js"></script>
+	<script src="bigSlide.min.js"></script>
+
+	<!-- data -->
+	<script src="data.js"></script>
+
+	<!-- analysis -->
+	<script src="script.js"></script>
+
+	<script>
+        $(document).ready(function() {
+            $('.menu-link').bigSlide();
+        });
+    </script>
+</body>
+</html>
